@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install k6
-        uses: grafana/k6-action@v1.2.0
+        uses: grafana/k6-action@latest
         id: install
 
       - name: Run k6 test
