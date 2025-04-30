@@ -19,6 +19,14 @@ export const options = {
     // Ensure that the HTTP request failure rate is less than 1%.
     'http_req_failed': ['rate<0.01'],
   },
+  ext: {
+        loadimpact: {
+            // Project: K6_CRUD
+            projectID: 3764871,
+            // Test runs with the same name groups test runs together.
+            name: 'Test (09/07/2024-23:08:22)'
+        }
+    }
 };
 
 // Define the main function that will be executed by each virtual user.
