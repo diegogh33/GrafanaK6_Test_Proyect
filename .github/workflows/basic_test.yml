@@ -1,4 +1,4 @@
-name: K6 Performance Test
+name: K6 Performance Basic test
 
 on:
   push:

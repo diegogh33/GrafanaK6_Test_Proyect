@@ -12,6 +12,14 @@ export const options = {
     http_req_failed: ["rate<0.02"], // http errors should be less than 2%
     http_req_duration: ["p(95)<2000"], // 95% requests should be below 2s
   },
+  ext: {
+    loadimpact: {
+      // Project: K6_CRUD
+      projectID: 3764871,
+      // Test runs with the same name groups test runs together.
+      name: "Test (30/04/2025-00:00:00)",
+    },
+  },
   cloud: {
     distribution: {
       "amazon:us:ashburn": { loadZone: "amazon:us:ashburn", percent: 100 },
