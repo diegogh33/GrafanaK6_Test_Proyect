@@ -1,0 +1,25 @@
+# Name of the workflow
+name: Manual Load Test - 10 users
+
+# Define the event that triggers this workflow: manual dispatch
+on:
+  workflow_dispatch:
+
+# Define the jobs to be executed in this workflow
+jobs:
+  load_test:
+    # Specify the runner environment
+    runs-on: ubuntu-latest
+
+    # Define the steps for this job
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - uses: grafana/run-k6-action@v1
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
+          K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }}
+        with:
+          path: |
+            ./test_10_users.js
+          cloud-run-locally: false
