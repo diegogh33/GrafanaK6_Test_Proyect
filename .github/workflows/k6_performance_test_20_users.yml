@@ -4,6 +4,10 @@ on:
   workflow_dispatch:
   push:
 
+concurrency:
+  group: k6_performance_tests
+  cancel-in-progress: false
+  
 jobs:
   protocol:
     runs-on: ubuntu-latest
