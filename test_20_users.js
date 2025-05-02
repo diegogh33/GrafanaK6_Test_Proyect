@@ -29,10 +29,16 @@ export const options = {
   },
 };
 
+// Creates an IDs array from 1 to 200
+const ids = Array.from({ length: 200 }, (_, i) => i + 1);
+
 // Define the main function that will be executed by each virtual user.
 export default function () {
+  // Selects a random ID from the previous array.
+  const id = ids[Math.floor(Math.random() * ids.length)];
+
   // Make an HTTP GET request to a public API endpoint.
-  const res = http.get("https://httpbin.org/delay/1"); // This API introduces a 1-second delay.
+  const res = http.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
 
   // Use the 'check' function to assert conditions on the HTTP response.
   check(res, {
@@ -41,9 +47,9 @@ export default function () {
     // Check if the transaction time (request duration) is acceptable.
     "transaction time OK": (r) => r.timings.duration < 500, // Expecting some delay from the API.
     // Check if the response body contains a specific string (adapt as needed).
-    "body contains origin": (r) => r.body.includes("origin"),
+    "body contains id": (r) => r.body.includes("id"),
   });
 
-  // Introduce a random pause between 0 and 2 seconds to simulate user think time.
-  sleep(Math.random() * 2);
+  // Introduce a random pause of 1 second to simulate user think time.
+  sleep(1);
 }

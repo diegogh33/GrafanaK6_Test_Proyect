@@ -13,17 +13,23 @@ export const options = {
       // Project: K6_CRUD
       projectID: 3764871,
       // Test runs with the same name groups test runs together.
-      name: "Test Performance - 20 users",
+      name: "Test Performance - 10 users",
     },
   },
 };
 
+const ids = Array.from({ length: 200 }, (_, i) => i + 1);
+
 export default function () {
-  const res = http.get("https://jsonplaceholder.typicode.com/todos/1");
+  const id = ids[Math.floor(Math.random() * ids.length)];
+
+  const res = http.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
+
   check(res, {
     "status is 200": (r) => r.status === 200,
     "transaction time OK": (r) => r.timings.duration < 200,
     "body contains id": (r) => r.body.includes("id"),
   });
-  sleep(Math.random() * 3); // Simula un tiempo de espera aleatorio entre 0 y 3 segundos
+
+  sleep(1);
 }
