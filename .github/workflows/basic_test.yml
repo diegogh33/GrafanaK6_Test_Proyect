@@ -16,3 +16,4 @@ jobs:
         with:
           path: |
             ./basic_test.js
+          cloud-run-locally: false
