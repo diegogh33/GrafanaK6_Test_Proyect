@@ -10,7 +10,7 @@ export const options = {
   // Define the number of virtual users (VUs) to simulate concurrent users.
   vus: 20,
   // Define the total duration of the test.
-  duration: '1m', // 1 minute
+  duration: '2m', // 2 minutes
 
   // Define performance thresholds to specify pass/fail criteria for the test.
   thresholds: {
@@ -24,7 +24,7 @@ export const options = {
             // Project: K6_CRUD
             projectID: 3764871,
             // Test runs with the same name groups test runs together.
-            name: 'Test (09/07/2024-23:08:22)'
+            name: 'Test Performance'
         }
     }
 };
