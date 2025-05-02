@@ -1,6 +1,7 @@
 name: K6 Performance Test - 20 users
 
 on:
+  workflow_dispatch:
   push:
 
 jobs:
