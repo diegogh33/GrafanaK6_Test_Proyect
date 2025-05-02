@@ -1,47 +1,47 @@
 // Import the 'http' module from the k6 library to make HTTP requests.
-import http from 'k6/http';
+import http from "k6/http";
 
 // Import the 'check' and 'sleep' functions from the k6 library.
 // 'check' is used to define assertions on HTTP responses, and 'sleep' is used to pause the execution of virtual users.
-import { check, sleep } from 'k6';
+import { check, sleep } from "k6";
 
 // Export the 'options' object to configure the test execution.
 export const options = {
   // Define the number of virtual users (VUs) to simulate concurrent users.
   vus: 20,
   // Define the total duration of the test.
-  duration: '2m', // 2 minutes
+  duration: "2m", // 2 minutes
 
   // Define performance thresholds to specify pass/fail criteria for the test.
   thresholds: {
     // Ensure that 95% of HTTP request durations are below 300 milliseconds.
-    'http_req_duration': ['p(95)<300'],
+    http_req_duration: ["p(95)<300"],
     // Ensure that the HTTP request failure rate is less than 1%.
-    'http_req_failed': ['rate<0.01'],
+    http_req_failed: ["rate<0.01"],
   },
   ext: {
-        loadimpact: {
-            // Project: K6_CRUD
-            projectID: 3764871,
-            // Test runs with the same name groups test runs together.
-            name: 'Test Performance'
-        }
-    }
+    loadimpact: {
+      // Project: K6_CRUD
+      projectID: 3764871,
+      // Test runs with the same name groups test runs together.
+      name: "Test Performance - 20 users",
+    },
+  },
 };
 
 // Define the main function that will be executed by each virtual user.
 export default function () {
   // Make an HTTP GET request to a public API endpoint.
-  const res = http.get('https://httpbin.org/delay/1'); // This API introduces a 1-second delay.
+  const res = http.get("https://httpbin.org/delay/1"); // This API introduces a 1-second delay.
 
   // Use the 'check' function to assert conditions on the HTTP response.
   check(res, {
     // Check if the HTTP status code is 200 (OK).
-    'status is 200': (r) => r.status === 200,
+    "status is 200": (r) => r.status === 200,
     // Check if the transaction time (request duration) is acceptable.
-    'transaction time OK': (r) => r.timings.duration < 500, // Expecting some delay from the API.
+    "transaction time OK": (r) => r.timings.duration < 500, // Expecting some delay from the API.
     // Check if the response body contains a specific string (adapt as needed).
-    'body contains origin': (r) => r.body.includes('origin'),
+    "body contains origin": (r) => r.body.includes("origin"),
   });
 
   // Introduce a random pause between 0 and 2 seconds to simulate user think time.
