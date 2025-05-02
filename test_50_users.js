@@ -51,5 +51,5 @@ export default function () {
   });
 
   // Introduce a random pause of 1 second to simulate user think time.
-  sleep(1);
+  // sleep(1);
 }
