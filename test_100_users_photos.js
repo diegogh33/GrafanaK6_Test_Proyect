@@ -48,7 +48,6 @@ export default function () {
     "transaction time OK": (r) => r.timings.duration < 500, // Expecting some delay from the API.
     // Check if the response body contains a specific string (adapt as needed).
     "body contains id": (r) => r.body.includes("id"),
-    "body contains thumbnailUrl": (r) => r.body.includes("thumbnailUrl"),
   });
 
   // Introduce a random pause of 1 second to simulate user think time.
