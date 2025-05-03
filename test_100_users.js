@@ -8,7 +8,7 @@ import { check, sleep } from "k6";
 // Export the 'options' object to configure the test execution.
 export const options = {
   // Define the number of virtual users (VUs) to simulate concurrent users.
-  vus: 50,
+  vus: 100,
   // Define the total duration of the test.
   duration: "2m", // 2 minutes
 
@@ -24,7 +24,7 @@ export const options = {
       // Project: K6_CRUD
       projectID: 3764871,
       // Test runs with the same name groups test runs together.
-      name: "Test Performance - 50 users",
+      name: "Test Performance - 100 users",
     },
   },
 };
