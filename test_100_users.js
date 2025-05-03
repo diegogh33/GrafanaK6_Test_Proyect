@@ -10,7 +10,7 @@ export const options = {
   // Define the number of virtual users (VUs) to simulate concurrent users.
   vus: 100,
   // Define the total duration of the test.
-  duration: "2m", // 2 minutes
+  duration: "5m", // 5 minutes
 
   // Define performance thresholds to specify pass/fail criteria for the test.
   thresholds: {
