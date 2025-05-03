@@ -1,19 +1,19 @@
-name: Basic test
+# name: Basic test
 
-on:
-  push:
+# on:
+#   push:
 
-jobs:
-  protocol:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: grafana/setup-k6-action@v1
-      - uses: grafana/run-k6-action@v1
-        env:
-          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
-          K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }}
-        with:
-          path: |
-            ./basic_test.js
-          cloud-run-locally: false
+# jobs:
+#   protocol:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v4
+#       - uses: grafana/setup-k6-action@v1
+#       - uses: grafana/run-k6-action@v1
+#         env:
+#           K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
+#           K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }}
+#         with:
+#           path: |
+#             ./basic_test.js
+#           cloud-run-locally: false

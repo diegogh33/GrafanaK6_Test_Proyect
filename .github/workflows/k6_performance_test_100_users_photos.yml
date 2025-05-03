@@ -1,0 +1,24 @@
+name: K6 Performance Test - 100 users (photos)
+
+on:
+  workflow_dispatch:
+  push:
+
+concurrency:
+  group: k6_performance_tests
+  cancel-in-progress: false
+
+jobs:
+  protocol:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: grafana/setup-k6-action@v1
+      - uses: grafana/run-k6-action@v1
+        env:
+          K6_CLOUD_TOKEN: ${{ secrets.K6_CLOUD_TOKEN }}
+          K6_CLOUD_PROJECT_ID: ${{ secrets.K6_CLOUD_PROJECT_ID }}
+        with:
+          path: |
+            ./test_100_users_photos.js
+          cloud-run-locally: false
