@@ -2,7 +2,7 @@ import http from "k6/http";
 import { check, sleep } from "k6";
 
 export const options = {
-  vus: 200, // Número de usuarios virtuales a simular
+  vus: 10, // Número de usuarios virtuales a simular
   duration: "2m", // Duración total de la prueba
   thresholds: {
     http_req_duration: ["p(95)<200"], // El 95% de las peticiones deben ser menores a 200ms
@@ -13,7 +13,7 @@ export const options = {
       // Project: K6_CRUD
       projectID: 3764871,
       // Test runs with the same name groups test runs together.
-      name: "Test Performance - 200 users",
+      name: "Test Performance - 10 users",
     },
   },
 };
