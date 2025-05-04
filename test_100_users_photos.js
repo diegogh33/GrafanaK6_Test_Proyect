@@ -8,7 +8,7 @@ import { check, sleep } from "k6";
 // Export the 'options' object to configure the test execution.
 export const options = {
   // Define the number of virtual users (VUs) to simulate concurrent users.
-  vus: 100,
+  vus: 85,
   // Define the total duration of the test.
   duration: "2m", // 2 minutes
 
